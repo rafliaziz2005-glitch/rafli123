@@ -1,0 +1,507 @@
+/* ===============================
+   GLOBAL RESET
+=================================*/
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:#0f0f10;
+  color:#e6e6e6;
+  line-height:1.7;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ===============================
+   GRID BACKGROUND + GLOW
+=================================*/
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  z-index:-2;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%);
+  top:-200px;
+  left:-200px;
+  animation:floatGlow 12s ease-in-out infinite alternate;
+  z-index:-1;
+}
+
+@keyframes floatGlow{
+  to{transform:translate(150px,150px)}
+}
+
+/* ===============================
+   CONTAINER
+=================================*/
+.container{
+  width:92%;
+  max-width:1150px;
+  margin:auto;
+}
+
+/* ===============================
+   HEADER
+=================================*/
+.header{
+  position:sticky;
+  top:0;
+  background:rgba(15,15,16,0.75);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:1000;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 0;
+}
+
+.logo{
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:3px;
+  background:linear-gradient(135deg,#fff,#888);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+nav a{
+  margin-left:28px;
+  text-decoration:none;
+  color:#bdbdbd;
+  transition:.3s;
+  position:relative;
+}
+
+nav a:hover{
+  color:#fff;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#fff,#777);
+  transition:.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* ===============================
+   HERO
+=================================*/
+.hero{
+  padding:160px 0 120px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:60px;
+  align-items:center;
+}
+
+.kicker{
+  opacity:.6;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.hero h1{
+  font-size:54px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.gradient{
+  background:linear-gradient(135deg,#fff,#888);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.desc{
+  opacity:.7;
+  max-width:480px;
+}
+
+.hero-actions{
+  margin-top:30px;
+  display:flex;
+  gap:16px;
+}
+
+/* ===============================
+   BUTTON
+=================================*/
+.btn-primary{
+  background:linear-gradient(135deg,#fff,#999);
+  color:#0f0f10;
+  padding:12px 26px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  position:relative;
+}
+
+.btn-ghost{
+  border:1px solid #444;
+  padding:12px 26px;
+  border-radius:30px;
+  color:#ddd;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn-ghost:hover{
+  background:#1c1c1f;
+}
+
+/* ===============================
+   PHOTO FRAME PREMIUM
+=================================*/
+.hero-image{
+  display:flex;
+  justify-content:center;
+}
+
+.photo-frame{
+  position:relative;
+  width:240px;
+  padding:6px;
+  border-radius:26px;
+  background:linear-gradient(135deg,#d4d4d8,#52525b);
+  overflow:hidden;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+.photo-frame::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:radial-gradient(circle, rgba(255,255,255,.2), transparent 60%);
+  animation:rotateGlow 8s linear infinite;
+}
+
+.photo-frame img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:20px;
+  position:relative;
+  z-index:2;
+  transition:.4s;
+}
+
+.photo-frame:hover img{
+  transform:scale(1.05);
+}
+
+@keyframes rotateGlow{
+  to{transform:rotate(360deg)}
+}
+
+/* ===============================
+   SECTIONS
+=================================*/
+.section{
+  padding:120px 0;
+}
+
+.section h2{
+  font-size:36px;
+  margin-bottom:40px;
+}
+
+/* ===============================
+   CARDS
+=================================*/
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+}
+
+.card{
+  padding:35px;
+  border-radius:22px;
+  background:rgba(40,40,45,0.6);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.08);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+}
+
+/* ===============================
+   PROJECTS
+=================================*/
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.project{
+  padding:35px;
+  border-radius:22px;
+  background:#1c1c1f;
+  border:1px solid #2a2a2e;
+  transition:.4s;
+}
+
+.project:hover{
+  transform:translateY(-10px);
+  border-color:#555;
+}
+
+/* ===============================
+   SKILLS
+=================================*/
+.skill{
+  margin:28px 0;
+}
+
+.bar{
+  height:8px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.bar span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#fff,#888);
+}
+
+/* ===============================
+   FOOTER
+=================================*/
+.footer{
+  padding:100px 0;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+.footer h2{
+  font-size:34px;
+  margin-bottom:20px;
+}
+
+.footer p{
+  opacity:.6;
+  margin-bottom:30px;
+}
+
+.copyright{
+  margin-top:40px;
+  font-size:14px;
+  opacity:.4;
+}
+
+/* ===============================
+   FLOATING SHAPES
+=================================*/
+.floating-shapes span{
+  position:fixed;
+  width:18px;
+  height:18px;
+  border:1px solid rgba(255,255,255,0.2);
+  animation:float 14s linear infinite;
+}
+
+.floating-shapes span:nth-child(1){ top:20%; left:10%; }
+.floating-shapes span:nth-child(2){ top:60%; left:80%; animation-delay:4s; }
+.floating-shapes span:nth-child(3){ top:80%; left:30%; animation-delay:8s; }
+
+@keyframes float{
+  to{transform:translateY(-120px)}
+}
+
+/* ===============================
+   RESPONSIVE
+=================================*/
+@media(max-width:1000px){
+  .hero-grid{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .hero-image{
+    margin-top:40px;
+  }
+
+  .grid,
+  .project-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* ================= LOADER ================= */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#0f0f10;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity .8s ease;
+}
+
+.loader-logo{
+  font-size:32px;
+  letter-spacing:6px;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  50%{opacity:.4}
+}
+
+/* ================= CURSOR ================= */
+.cursor{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#fff;
+  position:fixed;
+  pointer-events:none;
+  z-index:999;
+  transition:transform .1s;
+}
+
+.cursor-blur{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  position:fixed;
+  pointer-events:none;
+  filter:blur(50px);
+  z-index:998;
+}
+
+/* ================= THEME TOGGLE ================= */
+.theme-btn{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  margin-left:20px;
+  cursor:pointer;
+}
+
+.light{
+  background:#f2f2f2;
+  color:#111;
+}
+
+/* ================= SCROLL REVEAL ================= */
+.section{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= PROJECT GLOW ================= */
+.project{
+  position:relative;
+  overflow:hidden;
+}
+
+.project::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--x) var(--y),
+              rgba(255,255,255,.15), transparent 40%);
+  opacity:0;
+  transition:opacity .3s;
+}
+
+.project:hover::before{
+  opacity:1;
+}
+/* ================= SOCIAL ICON ================= */
+.social-links{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.social-btn{
+  padding:12px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  border:1px solid #444;
+  color:#ddd;
+  transition:all .35s ease;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* icon */
+.social-btn i{
+  font-size:18px;
+}
+
+/* glow animation */
+.social-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  opacity:0;
+  transition:.4s;
+}
+
+.social-btn:hover::before{
+  opacity:1;
+}
+
+.social-btn:hover{
+  transform:translateY(-5px) scale(1.05);
+  border-color:#fff;
+  color:#fff;
+}
